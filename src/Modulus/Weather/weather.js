@@ -20,9 +20,11 @@ function Weather(props) {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
+
   const onClickCard = (data) => {
     setData(data);
   };
+
   const {
     weatherCollection: {
       getWeather,
@@ -33,6 +35,7 @@ function Weather(props) {
       toFahrenheit,
     },
   } = props;
+
   useEffect(() => {
     async function getWeatherData() {
       await getWeather();
@@ -40,6 +43,7 @@ function Weather(props) {
     }
     getWeatherData();
   }, [getWeather]);
+  
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -58,6 +62,7 @@ function Weather(props) {
       items: 1,
     },
   };
+  
   if (loading) {
     return <Loading loading={loading} />;
   }

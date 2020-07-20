@@ -16,13 +16,11 @@ function WrapThemeProvider(props) {
 
 function App() {
   return (
-    <>
       <Provider {...store}>
         <WrapThemeProvider>
           <Path />
         </WrapThemeProvider>
       </Provider>
-    </>
   );
 }
 
