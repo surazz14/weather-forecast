@@ -20,7 +20,7 @@ function Weather(props) {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-  const onClickChart = (data) => {
+  const onClickCard = (data) => {
     setData(data);
   };
   const {
@@ -90,7 +90,7 @@ function Weather(props) {
             <Card
               key={i}
               date={data[0]?.dt_txt.slice(0, 10)}
-              onClick={() => onClickChart(data)}
+              onClick={() => onClickCard(data)}
               avgTemp={
                 value === "fahrenheit"
                   ? toFahrenheit(getAverageTemperture(data)) + "°F"
