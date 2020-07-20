@@ -109,21 +109,19 @@ function Weather(props) {
                 )} in ${value}`
               : "Select Card to see daily weather forecast chart"}
           </Typography>
+          <br />
           {data.length > 0 && (
-            <Box>
-              <br />
-              <Chart
-                type={Bar}
-                labels={data.map((data) => data.dt_txt.slice(11))}
-                data={data.map((data) =>
-                  value === "fahrenheit"
-                    ? toFahrenheit(data?.main?.temp)
-                    : toCelcius(data?.main?.temp)
-                )}
-                height={40}
-                width={80}
-              />
-            </Box>
+            <Chart
+              type={Bar}
+              labels={data.map((data) => data.dt_txt.slice(11))}
+              data={data.map((data) =>
+                value === "fahrenheit"
+                  ? toFahrenheit(data?.main?.temp)
+                  : toCelcius(data?.main?.temp)
+              )}
+              height={30}
+              width={80}
+            />
           )}
         </Box>
       </Box>

@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Weather Should match snapshot 1`] = `ShallowWrapper {}`;
-
-exports[`Weather render happens successfully 1`] = `ShallowWrapper {}`;
