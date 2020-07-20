@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `npm install`
 
-It installs all the package required for this site
+It installs all the package required for this app
 
 ### `npm start`
 
@@ -72,5 +72,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# anytime-dashboard
-# anytime-dashboard
+
