@@ -1,4 +1,5 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br/>
 This site is hosted at https://weather-forecast-suraz.netlify.app/
 
 ## Available Scripts
@@ -7,7 +8,7 @@ In the project directory, you can run:
 
 ### `npm install`
 
-It install alls the package required for this site
+It installs all the package required for this site
 
 ### `npm start`
 
