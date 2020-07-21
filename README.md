@@ -5,6 +5,13 @@ This site is hosted at https://weather-forecast-suraz.netlify.app/
 ## Available Scripts
 
 In the project directory, you can run:
+This Project is created by using node version v12.6.0
+
+if there is any issue do
+
+### `nvm use`
+
+It shows the node version to use then you can install current version of node.
 
 ### `npm install`
 
