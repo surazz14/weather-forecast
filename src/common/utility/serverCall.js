@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const axiosInstance = axios.create({
   baseURL: "https://api.openweathermap.org",
   headers: {
@@ -28,7 +27,7 @@ const serverRequest = (method = "POST") => (url) => async (
   }
 
   let extras = {};
-
+      
   if (options.contentType) {
     extras.contentType = options.contentType || "application/json";
   }

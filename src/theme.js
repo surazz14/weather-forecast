@@ -9,4 +9,4 @@ const theme = createMuiTheme({
   },
 });
 
-export default responsiveFontSizes(theme);
+export default theme

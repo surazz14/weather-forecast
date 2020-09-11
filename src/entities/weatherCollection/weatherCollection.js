@@ -8,9 +8,9 @@ const collection = types
   })
   .actions(generalAction)
   .actions((self) => ({
-    getWeather: flow(function* () {
+    getWeather: flow(function* (value) {
       const weatherData = yield self.getRequest(
-        "/data/2.5/forecast?q=Kathmandu&APPID=f80cd5a2787b43bbf850e9820a9ebede&cnt=40"
+        `/data/2.5/forecast?q=${value}&APPID=f80cd5a2787b43bbf850e9820a9ebede&cnt=40`
       )();
       self.data = weatherData.list;
     }),

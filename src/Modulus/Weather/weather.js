@@ -1,24 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { inject, observer } from "mobx-react";
-import { Bar } from "react-chartjs-2";
+import { Bar, Line } from "react-chartjs-2";
 import Box from "@material-ui/core/Box";
+import {Button} from '@material-ui/core'
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import { Autocomplete } from "@material-ui/lab";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from "../../common/Component/Card/card";
 import Loading from "../../common/Component/loading/loading";
 import Chart from "../../common/Component/Chart/chart";
+import Location from "../../common/utility/constant";
 
 function Weather(props) {
-  const [value, setValue] = useState("fahrenheit");
+  const [value, setValue] = React.useState("fahrenheit");
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  const [location, setLocation] = useState("kathmandu");
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    console.log('I am clicked----------------------------')
+    setValue('celcius');
   };
 
   const onClickCard = (data) => {
@@ -36,14 +42,19 @@ function Weather(props) {
     },
   } = props;
 
+  const getWeatherData = async (e, value) => {
+    setData([]);
+    setLoading(true);
+    setLocation(value);
+    await getWeather(value);
+    setLoading(false);
+  };
+
   useEffect(() => {
-    async function getWeatherData() {
-      await getWeather();
-      setLoading(false);
-    }
-    getWeatherData();
+    console.log(Location[0]);
+    getWeatherData("test", location);
   }, [getWeather]);
-  
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -62,17 +73,35 @@ function Weather(props) {
       items: 1,
     },
   };
-  
-  if (loading) {
-    return <Loading loading={loading} />;
+
+  const changeData =()=>{
+    console.log('I am on the way---------------------------------------------')
+    setValue('celcius')
   }
+
+  // if (loading) {
+  //   return <Loading loading={loading} />;
+  // }
   return (
     <>
       <Box ml="15%" mr="15%" mt="2%">
+        <Autocomplete
+          options={Location}
+          value={location}
+          id="location"
+          onChange={getWeatherData}
+          autoSelect={true}
+          disableClearable={true}
+          size={"small"}
+          renderInput={(params) => (
+            <TextField {...params} label="Location" margin="normal" />
+          )}
+        />
         <Box display="flex" justifyContent="center">
           <RadioGroup
             aria-label="temperture"
-            name="temperture"
+            className="test"
+            name=""
             value={value}
             row={true}
             onChange={handleChange}
@@ -81,7 +110,7 @@ function Weather(props) {
               value="celcius"
               control={<Radio color="primary" />}
               label="Celcius"
-            />
+            /> 
             <FormControlLabel
               value="fahrenheit"
               control={<Radio color="primary" />}
@@ -106,18 +135,18 @@ function Weather(props) {
           ))}
         </Carousel>
         <Box mt="5%">
-          <Typography align="center" variant="h5" component="h2">
+        {/* <Typography align="center" variant="h5" component="h2">
             {data.length > 0
               ? `Weather forecast Chart of ${data[0]?.dt_txt.slice(
                   0,
                   10
                 )} in ${value}`
               : "Select Card to see daily weather forecast chart"}
-          </Typography>
+          </Typography> */}
           <br />
           {data.length > 0 && (
             <Chart
-              type={Bar}
+              type={Line}
               labels={data.map((data) => data.dt_txt.slice(11))}
               data={data.map((data) =>
                 value === "fahrenheit"
@@ -128,6 +157,10 @@ function Weather(props) {
               width={80}
             />
           )}
+          <input type ='text' className='in' onChange={handleChange}/>
+          <Button onClick ={changeData} className="check">test</Button>
+
+              <Typography>{value}</Typography>
         </Box>
       </Box>
     </>

@@ -17,9 +17,20 @@ function Chart(props) {
     datasets: [
       {
         data: data,
-        backgroundColor: "#4F81BD",
+        // backgroundColor: "White",
+        borderColor: "green",
+        fontColor: "green",
       },
     ],
+    options: {
+      legend: {
+        labels: {
+          // This more specific font property overrides the global property
+          fontColor: "red",
+        },
+      },
+      defaultFontColor: "red",
+    },
   };
 
   return (
